@@ -1,0 +1,38 @@
+#container {
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0 auto;
+  padding: 0px 10px;
+  max-width: 720px;
+}
+
+.recording-btn {
+  height: 55%;
+  background-color: transparent;
+  width: 35px;
+}
+
+.active-recording-btn {
+  @extend .recording-btn;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  animation: blink 0.9s step-end infinite alternate;
+}
+
+@keyframes blink {
+  50% {
+    border-color: #cf3c4f;
+  }
+}
+
+.icon {
+  font-size: 18px;
+}
+
+.save-btn {
+  text-transform: capitalize;
+}

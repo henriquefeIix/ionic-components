@@ -1,0 +1,53 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="false">
+  <div id="container">
+    <form [formGroup]="form">
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-textarea labelPlacement="floating" label="Description" formControlName="description" />
+
+            <button clear slot="end" (click)="startListening()" *ngIf="!recording" class="recording-btn">
+              <ion-icon name="mic-outline" class="icon"></ion-icon>
+            </button>
+
+            <button slot="end" (click)="stopListening()" *ngIf="recording" class="active-recording-btn">
+              <ion-icon name="mic-off-outline" class="icon"></ion-icon>
+            </button>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <app-image-picker (imagesUploadEvent)="onImagesUpload($event)"></app-image-picker>
+        </ion-col>
+
+        <ion-col *ngIf="images.length > 0">
+          <ion-button fill="outline" expand="block" (click)="viewImages()">
+            <ion-icon name="images-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <app-location (dismissEvent)="onLocationDismiss($event)"></app-location>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-button fill="outline" expand="block" class="save-btn" (click)="save()">
+            Save
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </div>
+</ion-content>

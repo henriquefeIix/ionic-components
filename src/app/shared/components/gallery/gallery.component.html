@@ -1,0 +1,13 @@
+<swiper-container #swiper pagination="true">
+  <ng-container *ngIf="images.length > 0; else noImages">
+    <swiper-slide *ngFor="let image of images">
+      <img [src]="image.data" />
+    </swiper-slide>
+  </ng-container>
+
+  <ng-template #noImages>
+    <swiper-slide>
+      No images to show.
+    </swiper-slide>
+  </ng-template>
+</swiper-container>
